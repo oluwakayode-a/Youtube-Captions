@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parse YouTube captions</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+                        viewBox="0 0 24 24">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg>
+                    <strong>YouTube Captions</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Hey Kiddo...</h1>
+                <p class="lead text-muted">Type in a YouTube URL to check for subtitles</p>
+            </div>
+        </div>
+    </section>
+    <div id="app">
+        <div class="container text-center">
+            <form class="row g-3 mx-auto" style="max-width: 500px" id="form" @submit.prevent="fetchCaption">
+                <div class="col-sm-7 offset-lg-2">
+                    <input 
+                        type="text" 
+                        required 
+                        class="form-control" 
+                        placeholder="YouTube URL" 
+                        name="url" 
+                        aria-label="URL" 
+                        v-model="youtubeURL"
+                        title="Enter Valid URL"
+                        pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
+                        >
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" :disabled="loading" id="btn">
+                        <div v-if="loading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </div>
+                        <div v-else>
+                            Submit
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    
+        <div class="container text-center mt-3">
+            <h3>${ status }</h3>
+            <div class="mx-auto" v-if="completed">
+                <a href="{{ url_for('static', filename='file.pdf') }}" class="btn btn-primary" download>Download PDF</a>
+                <a class="btn btn-secondary mx-3" href="{{ url_for('static', filename='file.txt') }}" download>Download TXT</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        Built with love, Python and Flask, &#128151; oluwakayode.
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>
+        const mountedApp = app.mount("#app")
+    </script>
+</body>
+
+</html>
