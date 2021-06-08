@@ -13,6 +13,8 @@ const app = Vue.createApp({
     methods: {
         fetchCaption() {
             this.loading = true
+            this.completed = false
+            
             const textBody = document.getElementById('text')
 
             fetch(`https://${host}/get_video_text/`, {
