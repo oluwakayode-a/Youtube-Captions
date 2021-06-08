@@ -57,7 +57,7 @@ def create_files(text):
     with open("static/file.txt", 'w') as f:
         f.writelines(text)
     
-    with open("file.txt", 'r') as f:
+    with open("static/file.txt", 'r') as f:
         for x in f:
             pdf.cell(200, 10, txt = x, ln = 1, align = 'C')
         pdf.output("static/file.pdf")
