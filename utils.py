@@ -72,7 +72,7 @@ def create_files(text):
 def text_to_pdf(text, filename):
     a4_width_mm = 210
     pt_to_mm = 0.35
-    fontsize_pt = 10
+    fontsize_pt = 13
     fontsize_mm = fontsize_pt * pt_to_mm
     margin_bottom_mm = 10
     character_width_mm = 7 * pt_to_mm
@@ -86,7 +86,7 @@ def text_to_pdf(text, filename):
     pdf.set_auto_page_break(True, margin=margin_bottom_mm)
     pdf.add_page()
     pdf.set_font(family='NotoSans', size=fontsize_pt)
-    splitted = text.split('\n')
+    splitted = text.split('\n\n')
 
     for line in splitted:
         lines = textwrap.wrap(line, width_text)
