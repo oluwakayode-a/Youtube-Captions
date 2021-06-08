@@ -1,4 +1,4 @@
-const urlRegex = "/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig"
+const host = window.location.host
 
 const app = Vue.createApp({
     delimiters: ['${', '}'],
@@ -15,7 +15,7 @@ const app = Vue.createApp({
             this.loading = true
             const textBody = document.getElementById('text')
 
-            fetch("http://localhost:5000/get_video_text/", {
+            fetch(`https://${host}/get_video_text/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
