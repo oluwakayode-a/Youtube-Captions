@@ -79,10 +79,10 @@ def text_to_pdf(text, filename):
     width_text = a4_width_mm / character_width_mm
 
     pdf = FPDF(orientation='P', unit='mm', format='A4')
-    pdf.add_font("NotoSans", style="", fname="NotoSans-Regular.ttf", uni=True)
-    pdf.add_font("NotoSans", style="B", fname="NotoSans-Bold.ttf", uni=True)
-    pdf.add_font("NotoSans", style="I", fname="NotoSans-Italic.ttf", uni=True)
-    pdf.add_font("NotoSans", style="BI", fname="NotoSans-BoldItalic.ttf", uni=True)
+    pdf.add_font("NotoSans", style="", fname="fonts/NotoSans-Regular.ttf", uni=True)
+    pdf.add_font("NotoSans", style="B", fname="fonts/NotoSans-Bold.ttf", uni=True)
+    pdf.add_font("NotoSans", style="I", fname="fonts/NotoSans-Italic.ttf", uni=True)
+    pdf.add_font("NotoSans", style="BI", fname="fonts/NotoSans-BoldItalic.ttf", uni=True)
     pdf.set_auto_page_break(True, margin=margin_bottom_mm)
     pdf.add_page()
     pdf.set_font(family='NotoSans', size=fontsize_pt)
