@@ -95,6 +95,6 @@ def text_to_pdf(text, filename):
             pdf.ln()
 
         for wrap in lines:
-            pdf.cell(0, fontsize_mm, wrap, ln=1)
+            pdf.cell(0, 10, wrap, ln=1)
 
     pdf.output(filename, 'F')
