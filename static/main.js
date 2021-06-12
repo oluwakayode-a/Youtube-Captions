@@ -17,7 +17,7 @@ const app = Vue.createApp({
             
             const textBody = document.getElementById('text')
 
-            fetch(`http://${host}/get_video_text/`, {
+            fetch(`https://${host}/get_video_text/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
